@@ -1,0 +1,61 @@
+.search-form__switch {
+    display: inline-block;
+    width: 36px; /* ширина */
+    height: 20px; /* высота */
+    border-radius: 16px;
+    box-shadow: 0 4px 4px rgba(50, 50, 71, 0.08), 0 4px 8px rgba(50, 50, 71, 0.06);
+    background: #ffffff; /* цвет фона */
+    z-index: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition-duration: 300ms; /* анимация */
+}
+
+.search-form__switch:before {
+    content: "";
+    height: 16px; /* высота кнопки */
+    width: 16px; /* ширина кнопки */
+    border-radius: 50%;
+    background: #2BE080; /* цвет кнопки */
+    top: 2px; /* положение кнопки по вертикали относительно основы */
+    left: 3px; /* положение кнопки по горизонтали относительно основы */
+    transition-duration: 300ms; /* анимация */
+    position: absolute;
+    z-index: 1;
+}
+
+.search-form__switch.active:before {
+    left: 17px;
+}
+
+.search-form__short-movies-text {
+    margin: 0;
+    display: flex;
+}
+
+.search-form__switch-and-text {
+    display: flex;
+    align-items: center;
+    margin-top: 32px;
+    margin-bottom: 47px;
+    gap: 14px;
+}
+
+@media screen and (max-width: 900px) {
+    .search-form__switch-and-text {
+        justify-content: flex-end;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .search-form__switch-and-text {
+        margin-top: 41px;
+        justify-content: center;
+        flex-direction: row-reverse;
+        font-size: 11px;
+        line-height: 18px;
+    }
+}

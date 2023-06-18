@@ -1,0 +1,145 @@
+.movies__header {
+    padding: 18px 0;
+}
+
+.movies__header-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 70px;
+}
+
+.movies__header-menu {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.movies__header-nav {
+    padding-left: 65px;
+    flex: 1;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+}
+
+.movies__link-home {
+    display: none;
+}
+
+.movies__link-films {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 18px;
+    text-decoration: none;
+    color: #000000;
+    position: relative;
+}
+
+.movies__link-film_active {
+    font-weight: 500;
+}
+
+.movies__account-link {
+    border: 2px solid rgba(170, 170, 170, 0.2);
+    border-radius: 50px;
+    padding: 8px 12px;
+    text-decoration: none;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    align-items: center;
+    color: #000000;
+}
+
+.movies__account-icon {
+    margin-right: 7px;
+}
+
+@media (max-width: 768px) {
+    .movies__header-container {
+        padding: 0 30px;
+    }
+
+    .movies__link_active:before {
+        width: 100%;
+        height: 2px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: #000;
+        content: '';
+    }
+
+    .overlay {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: #000;
+        opacity: 0;
+        visibility: hidden;
+        content: '';
+        z-index: 990;
+        transition: 0.3s;
+    }
+
+    .overlay_active {
+        visibility: visible;
+        opacity: 0.3;
+    }
+
+    .movies__link-home {
+        display: block;
+    }
+
+    .movies__header-menu {
+        max-width: 520px;
+        width: 100%;
+        height: 100vh;
+        padding: 160px 25px 90px;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: 0;
+        background: #fff;
+        z-index: 995;
+        box-sizing: border-box;
+        transform: translateX(100%);
+        transition: transform 0.3s;
+    }
+
+    .movies__header-menu.movies__header-menu_active {
+        transform: translateX(0);
+    }
+
+    .movies__header-nav {
+        padding-left: 0;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .movies__link-films {
+        padding: 5px 0;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .movies__header-menu {
+        width: 100%;
+        padding-bottom: 46px;
+    }
+
+    .movies__header-container {
+        padding: 0 14px;
+    }
+}

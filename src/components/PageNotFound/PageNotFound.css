@@ -6,7 +6,6 @@
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    position: relative;
 }
 
 .notfound__title {
@@ -23,14 +22,16 @@
 }
 
 .notfound__back {
-    position: absolute;
-    left: 50%;
-    bottom: 60px;
-    transform: translateX(-50%);
+    margin-top: 184px;
     font-size: 14px;
     line-height: 17px;
     color: #3456F3;
     text-decoration: none;
+}
+
+.notfound__back:hover {
+    opacity: 0.5;
+    transition: 2ms;
 }
 
 @media screen and (max-width: 768px) {
@@ -52,7 +53,7 @@
     }
 
     .notfound__back {
-        bottom: 30px;
+        margin-top: 284px;
         font-size: 12px;
         line-height: 15px;
     }

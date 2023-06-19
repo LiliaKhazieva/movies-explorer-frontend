@@ -15,6 +15,7 @@ function SavedMovies() {
     <>
       <Navigation />
       <section className='saved-movies'>
+        <h1 className='saved-movies__title-hidden'>Movies</h1>
         <div className='container_thin saved-movies__container'>
           <SearchForm />
           <MoviesCardList>

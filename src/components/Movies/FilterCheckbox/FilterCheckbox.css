@@ -1,34 +1,35 @@
 .search-form__switch {
     display: inline-block;
-    width: 36px; /* ширина */
-    height: 20px; /* высота */
+    width: 36px;
+    height: 20px;
     border-radius: 16px;
     box-shadow: 0 4px 4px rgba(50, 50, 71, 0.08), 0 4px 8px rgba(50, 50, 71, 0.06);
-    background: #ffffff; /* цвет фона */
+    background: #ffffff;
     z-index: 0;
     margin: 0;
     padding: 0;
     border: none;
     cursor: pointer;
     position: relative;
-    transition-duration: 300ms; /* анимация */
+    transition-duration: 300ms;
 }
 
 .search-form__switch:before {
     content: "";
-    height: 16px; /* высота кнопки */
-    width: 16px; /* ширина кнопки */
+    height: 16px;
+    width: 16px;
     border-radius: 50%;
-    background: #2BE080; /* цвет кнопки */
-    top: 2px; /* положение кнопки по вертикали относительно основы */
-    left: 3px; /* положение кнопки по горизонтали относительно основы */
-    transition-duration: 300ms; /* анимация */
+    background: #F5F5F5;
+    top: 2px;
+    left: 3px;
+    transition-duration: 300ms;
     position: absolute;
     z-index: 1;
 }
 
 .search-form__switch.active:before {
     left: 17px;
+    background: #2BE080;
 }
 
 .search-form__short-movies-text {
@@ -42,11 +43,15 @@
     margin-top: 32px;
     margin-bottom: 47px;
     gap: 14px;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 900px) {
     .search-form__switch-and-text {
-        justify-content: flex-end;
+        justify-content: flex-start;
+        flex-direction: row-reverse;
+        font-size: 13px;
+        line-height: 18px;
     }
 }
 
@@ -54,8 +59,6 @@
     .search-form__switch-and-text {
         margin-top: 41px;
         justify-content: center;
-        flex-direction: row-reverse;
         font-size: 11px;
-        line-height: 18px;
     }
 }

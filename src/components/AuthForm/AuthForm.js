@@ -14,7 +14,7 @@ function AuthForm({ title, name, buttonName, buttonClassName = '', children, des
   return (
     <section className='auth-form'>
       <Link to='/' className='auth-form__link'><img className='auth-form__logo' src={logo} alt='Логотип'/></Link>
-      <h2 className='auth-form__title'>{title}</h2>
+      <h1 className='auth-form__title'>{title}</h1>
       <form
         name={name}
         className={`auth-form__form ${submitted ? 'auth-form__form--submitted' : ''}`}

@@ -5,11 +5,11 @@ import './AboutMe.css';
 export default function AboutMe() {
   return (
     <section className='about-me'>
-      <div className="container">
-        <h2 className='title about__title'>Студент</h2>
+      <div className="about-me__container container">
+        <h2 className='about-me__title title'>Студент</h2>
         <div className='about-me__wrapper'>
           <div className='about-me__text'>
-            <h3 className='about-me__title'>
+            <h3 className='about-me__text-title'>
               Виталий
             </h3>
             <p className='about-me__caption'>

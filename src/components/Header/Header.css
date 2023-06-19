@@ -21,7 +21,7 @@
     gap: 30px;
 }
 
-.header__link {
+.header__nav-link {
     text-decoration: none;
     font-style: normal;
     font-weight: 500;
@@ -30,12 +30,12 @@
     color: #ffffff;
 }
 
-.header__link:hover {
+.header__nav-link:hover {
     opacity: 0.5;
     transition: 2ms;
 }
 
-.header__link_active {
+.header__nav-link_active {
     padding: 8px 20px;
     color: #000000;
     background-color: #2BE080;
@@ -53,7 +53,7 @@
         padding: 0 14px;
     }
 
-    .header__link_active {
+    .header__nav-link_active {
         padding: 5px 12px;
     }
 
@@ -61,7 +61,7 @@
         gap: 14px;
     }
 
-    .header__link {
+    .header__nav-link {
         font-size: 10px;
     }
 }

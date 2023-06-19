@@ -52,10 +52,11 @@
 
 @media (max-width: 450px) {
     .auth-form__link {
-        margin: 56px auto 0;
+        margin: 45px auto 0;
     }
 
     .auth-form__title {
+        margin: 48px 0 40px 0;
         text-align: center;
     }
 
@@ -64,7 +65,7 @@
     }
 
     .auth-form__form-button {
-        margin-top: 170px;
+        margin-top: 155px;
         font-size: 12px;
     }
 }

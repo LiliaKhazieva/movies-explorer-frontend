@@ -9,7 +9,7 @@ function Burger({
   return (
     <div onClick={onClick}>
       {isVisible ? (
-        <img src={burgerCloseImg} alt='burger close' className='burger' />
+        <img src={burgerCloseImg} alt='burger close' className='burger burger__close' />
       ) : (
         <img src={burgerImg} alt='burger show' className='burger' />
       )}

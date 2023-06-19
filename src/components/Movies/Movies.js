@@ -7,8 +7,8 @@ import MoviesCard from './MoviesCard/MoviesCard';
 import Alert from '../Alert/Alert';
 import { useAlert } from '../../utils/useAlert';
 import { usePreloader } from '../../utils/usePreloader';
-import './Movies.css'
 import Preloader from '../Preloader/Preloader';
+import './Movies.css'
 
 function Movies() {
   const {
@@ -38,8 +38,9 @@ function Movies() {
         onClose={() => setIsAlertActive(false)}
       />
       <Navigation />
-      <section className='movies'>
-        <div className='container_thin movies__container'>
+      <main className='movies'>
+        <div className='movies__container container-thin'>
+          <h1 className='movies__title-hidden'>Movies</h1>
           <SearchForm />
           <Preloader
             isLoading={isLoading}
@@ -62,8 +63,8 @@ function Movies() {
           </Preloader>
           <button className='movies__more-btn'>Ещё</button>
         </div>
-      </section>
-      <Footer isThin />
+      </main>
+      <Footer />
     </>
   )
 }

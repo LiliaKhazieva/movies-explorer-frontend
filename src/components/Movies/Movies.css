@@ -4,6 +4,14 @@
     align-items: center;
 }
 
+.movies__container {
+    padding: 0 50px;
+}
+
+.movies__title-hidden {
+    display: none;
+}
+
 .movies__more-btn {
     display: flex;
     justify-content: center;
@@ -21,4 +29,25 @@
     font-size: 12px;
     line-height: 15px;
     text-align: center;
+}
+
+.movies__more-btn:hover {
+    opacity: 0.5;
+    transition: 2ms;
+}
+
+.movies__footer {
+    padding: 0 50px;
+}
+
+@media screen and (max-width: 900px) {
+    .movies__container {
+        padding: 0 30px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .movies__container {
+        padding: 0 10px;
+    }
 }

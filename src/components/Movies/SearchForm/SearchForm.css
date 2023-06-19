@@ -45,9 +45,18 @@
     font-weight: 500;
     font-size: 28px;
     line-height: 34px;
-    color: #A0A0A0;
+    color: #000000;
     border: 0;
     padding: 0;
+}
+
+.search-form__input:hover {
+    box-shadow: 0 0 3px #A0A0A0 inset;
+}
+
+.search-form__input:focus {
+    box-shadow: 0 0 3px #A0A0A0 inset;
+    outline: none;
 }
 
 .search-form__button {
@@ -62,6 +71,11 @@
     line-height: 18px;
     text-align: center;
     color: #ffffff;
+}
+
+.search-form__button:hover {
+    background-color: rgba(52, 86, 243, 0.8);
+    transition: 2ms;
 }
 
 @media screen and (max-width: 900px) {

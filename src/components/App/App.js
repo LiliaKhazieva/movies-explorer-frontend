@@ -14,7 +14,6 @@ import PageNotFound from '../PageNotFound/PageNotFound';
 function App() {
   return (
     <div className='page'>
-      <div className='page__container'>
         <Routes>
           <Route path='/' element={
             <>
@@ -36,7 +35,6 @@ function App() {
           />
           <Route path='*' element ={<PageNotFound />} />
         </Routes>
-      </div>
     </div>
   );
 }

@@ -4,8 +4,8 @@ import './AboutProject.css';
 export default function AboutProject() {
   return (
     <section className='about' id='about'>
-      <div className='container about__container'>
-        <h2 className='title about__title'>О проекте</h2>
+      <div className='about__container container'>
+        <h2 className='about__title title'>О проекте</h2>
         <div className='about__description'>
           <div>
             <h3 className='about__description-title'>

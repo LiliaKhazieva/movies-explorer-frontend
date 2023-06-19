@@ -12,6 +12,7 @@
 }
 
 .profile__title {
+    margin: 0;
     font-weight: 500;
     font-size: 24px;
     line-height: 29px;
@@ -21,7 +22,7 @@
 
 .profile__form {
     width: 100%;
-    margin-top: 90px;
+    margin-top: 110px;
 }
 
 .profile__form-row {
@@ -43,6 +44,11 @@
     padding: 10px 0;
     border: 0;
     text-align: right;
+}
+
+.profile__form-input:hover {
+    box-shadow: 0 0 3px #A0A0A0 inset;
+    outline: none;
 }
 
 .profile__bottom {
@@ -74,11 +80,16 @@
 
 @media screen and (max-width: 768px) {
     .profile__form {
-        margin-top: 60px;
+        margin-top: 62px;
+        margin-bottom: 52px;
     }
 
     .profile__bottom {
         margin-top: 190px;
+    }
+
+    .profile__title {
+        margin: 17px;
     }
 }
 
@@ -94,5 +105,9 @@
     .profile__logout {
         font-size: 12px;
         line-height: 15px;
+    }
+
+    .profile__title {
+        margin-top: 70px;
     }
 }

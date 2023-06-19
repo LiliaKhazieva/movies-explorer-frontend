@@ -19,7 +19,7 @@ function MoviesCard({
   const renderSaveBtn = () => {
     return isFavorite ? (
       <button
-        className='movies-cards__save-btn_active'
+        className='movies-cards__save-btn-active'
         type='button'
       ></button>
     ) : (
@@ -34,14 +34,14 @@ function MoviesCard({
   return (
     <>
       <li className='movies-cards__item'>
-        <a href='#' className='movies-cards__trailer-link link'>
+        <a href='https://www.youtube.com/' target='_blank' className='movies-cards__trailer-link link'>
           {onDeleteClick && renderRemoveBtn()}
           {onFavoriteClick && renderSaveBtn()}
           <img className='movies-cards__image' alt='Movie' src={Movie}/>
         </a>
         <div className='movies-cards__description'>
           <div className='movies-cards__description-container'>
-            <h3 className='movies-cards__title'>В погоне за Бенкси</h3>
+            <h2 className='movies-cards__title'>В погоне за Бенкси</h2>
             <p className='movies-cards__duration'>1ч 17м</p>
           </div>
         </div>

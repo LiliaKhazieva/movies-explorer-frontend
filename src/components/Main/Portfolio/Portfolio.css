@@ -1,5 +1,5 @@
 .portfolio {
-    padding: 0 0 125px;
+    padding: 0 0 207px;
 }
 
 .portfolio__title {
@@ -72,17 +72,28 @@
 
 @media screen and (max-width: 900px) {
     .portfolio {
-        padding: 0 0 90px;
+        padding: 0 0 169px;
     }
 
     .portfolio__text {
         font-size: 28px;
         line-height: 50px;
     }
+
+    .portfolio__icon {
+        margin: 0 5px 0 0;
+        width: 15px;
+        height: 15px;
+    }
 }
+
 @media screen and (max-width: 450px) {
     .portfolio {
         padding: 0 0 149px;
+    }
+
+    .portfolio__container {
+        padding: 0 14px;
     }
 
     .portfolio__title {
@@ -96,7 +107,8 @@
     }
 
     .portfolio__icon {
-        width: 15px;
-        height: 15px;
+        margin: 0 5px 0 0;
+        width: 10px;
+        height: 10px;
     }
 }

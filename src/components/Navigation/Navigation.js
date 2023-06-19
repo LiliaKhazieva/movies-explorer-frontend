@@ -9,34 +9,34 @@ function Navigation() {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
 
   return (
-    <header className='movies__header'>
-      <div className='container movies__header-container'>
-        <Link to='/' className='movies__header-link'><img className='movies__header-logo' src={logo} alt='Логотип'/></Link>
+    <header className='movies-header'>
+      <div className='movies-header__container container'>
+        <Link to='/' className='movies-header__link'><img className='movies-header__logo' src={logo} alt='Логотип'/></Link>
         <Burger
           isVisible={isMenuVisible}
           onClick={() => setIsMenuVisible(!isMenuVisible)}
         />
         <div className={`overlay ${isMenuVisible ? 'overlay_active' : ''}`} />
-        <div className={`movies__header-menu ${isMenuVisible ? 'movies__header-menu_active' : ''}`}>
-          <nav className='movies__header-nav'>
+        <div className={`movies-header__menu ${isMenuVisible ? 'movies-header__menu_active' : ''}`}>
+          <nav className='movies-header__nav'>
             <NavLink
               to='/'
-              className={({ isActive }) => `movies__link-films movies__link-home ${isActive ? 'movies__link_active' : ''}`}
+              className={({ isActive }) => `movies-header__nav-link movies-header__nav-link-home ${isActive ? 'movies-header__nav-link_active' : ''}`}
             >Главная</NavLink>
             <NavLink
               to='/movies'
-              className={({ isActive }) => `movies__link-films ${isActive ? 'movies__link_active' : ''}`}
+              className={({ isActive }) => `movies-header__nav-link  ${isActive ? 'movies-header__nav-link_active' : ''}`}
             >Фильмы</NavLink>
             <NavLink
               to='/saved-movies'
-              className={({ isActive }) => `movies__link-films ${isActive ? 'movies__link_active' : ''}`}
+              className={({ isActive }) => `movies-header__nav-link ${isActive ? 'movies-header__nav-link_active' : ''}`}
             >Сохраненные фильмы</NavLink>
           </nav>
           <NavLink
             to='/profile'
-            className='movies__account-link'
+            className='movies-header__account-link'
           >
-            <img className='movies__account-icon' src={icon} alt='Icon'/>
+            <img className='movies-header__account-icon' src={icon} alt='Icon'/>
             Аккаунт
           </NavLink>
         </div>

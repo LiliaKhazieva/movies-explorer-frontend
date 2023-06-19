@@ -3,7 +3,7 @@ import './SearchForm.css';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 
 function SearchForm() {
-  const [isShortFilms, setIsShortFilms] = useState(false);
+  const [isShortFilms, setIsShortFilms] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
 
   const onSearchClick = (e) => {
@@ -24,7 +24,7 @@ function SearchForm() {
               onChange={(e) => setSearchQuery(e.target.value)}
               required
             />
-            <button className='search-form__button button' onClick={onSearchClick}>Найти</button>
+            <button className='search-form__button' onClick={onSearchClick}>Найти</button>
           </div>
           <FilterCheckbox value={isShortFilms} onClick={() => setIsShortFilms(!isShortFilms)} />
         </fieldset>

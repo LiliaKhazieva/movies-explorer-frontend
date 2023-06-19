@@ -89,12 +89,17 @@
         padding: 90px 0 80px;
     }
 
+    .about__description {
+        column-gap: 33px;
+    }
+
     .about__description-text {
         font-size: 12px;
         line-height: 18px;
     }
 
     .about__timeline {
+        grid-template-columns: 21% auto;
         margin-top: 89px;
     }
 }
@@ -113,7 +118,7 @@
     .about__description {
         margin-top: 61px;
         grid-template-columns: 1fr;
-        row-gap: 50px;
+        row-gap: 55px;
     }
 
     .about__description-title {
@@ -124,9 +129,9 @@
     }
 
     .about__timeline {
-        margin-top: 52px;
+        margin-top: 59px;
         display: grid;
-        grid-template-columns: 30% auto;
+        grid-template-columns: 35% auto;
         row-gap: 0;
     }
 
@@ -134,5 +139,10 @@
         padding: 11px 14px;
         font-size: 11px;
         line-height: 13px;
+    }
+
+    .about__description-text {
+        font-size: 11px;
+        line-height: 16px;
     }
 }

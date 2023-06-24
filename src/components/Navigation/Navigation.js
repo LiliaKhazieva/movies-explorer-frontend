@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Navigation.css';
-import { Link, Navigate, NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../../images/logoMovie.svg';
 import iconBlack from '../../images/icon__men-account.svg'
 import iconWhite from '../../images/icon__COLOR_font-white.svg'

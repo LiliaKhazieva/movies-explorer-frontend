@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import auth from '../../utils/Auth'
@@ -221,7 +221,7 @@ function App() {
   // инициируем проверку токена при загрузке приложения
   useEffect(() => {
     handleCheckToken();
-  }, []);
+  }, [handleCheckToken]);
 
   // сохраняем поисковые параметры в хранилище
   useEffect(() => {

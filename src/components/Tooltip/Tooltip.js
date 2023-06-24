@@ -7,7 +7,7 @@ function Tooltip({ isOpen, message, onClose }) {
     if (isOpen) {
       setTimeout(onClose, 5000)
     }
-  }, [isOpen])
+  }, [isOpen, onClose])
 
   return (
     <div className={`tooltip ${isOpen ? 'tooltip_active' : ''}`}>

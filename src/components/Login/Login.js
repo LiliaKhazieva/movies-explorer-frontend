@@ -46,6 +46,7 @@ function Login({ onLogin, isLoggedIn }) {
           placeholder='E-mail'
           value={values.email}
           onChange={handleChange}
+          pattern='^.+@.+\..+$'
           minLength='2'
           maxLength='30'
           required

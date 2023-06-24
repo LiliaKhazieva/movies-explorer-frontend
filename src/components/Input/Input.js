@@ -11,6 +11,7 @@ function Input({
   name,
   onChange,
   errorMessage = '',
+  pattern,
 }) {
 
   return (
@@ -24,6 +25,7 @@ function Input({
         maxLength={maxLength}
         className='input__field'
         name={name}
+        pattern={pattern}
         onChange={onChange}
       />
       {!!errorMessage.length && <span className='input__error'>{errorMessage}</span>}

@@ -58,6 +58,7 @@ function Register({ onRegister, isLoggedIn }) {
           type='email'
           value={values.email}
           onChange={handleChange}
+          pattern='^.+@.+\..+$'
           minLength='2'
           maxLength='30'
           required

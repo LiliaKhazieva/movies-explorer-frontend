@@ -4,7 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 import logo from '../../images/logoMovie.svg';
 import Navigation from '../Navigation/Navigation';
 
-function Header({ isLoggedIn }) {
+function Header({ isLoggedIn, windowSize }) {
 
   // Неавторизованный пользователь
   const headerIsLoggedIn = (
@@ -22,7 +22,7 @@ function Header({ isLoggedIn }) {
   // Авторизованный
   const headerIsLoggedInActive = (
     <>
-      <Navigation isLight />
+      <Navigation isLight windowSize={windowSize} />
     </>
   );
 

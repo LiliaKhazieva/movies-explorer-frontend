@@ -6,9 +6,9 @@ import './Profile.css';
 
 function Profile({ onProfile, handleLogOut }) {
   const { values, errors, isValid, handleChange, setValues } = useFormAndValidation(false);
-  const isDisabled = !isValid;
-
   const { currentUser } = useContext(CurrentUserContext);
+
+  const isDisabled = !isValid || (values.name === currentUser.name && values.email === currentUser.email);
 
   useEffect(() => {
     setValues({
@@ -63,6 +63,7 @@ function Profile({ onProfile, handleLogOut }) {
               placeholder='Введите email'
               onChange={handleChange}
               value={values.email || ''}
+              pattern='^.+@.+\..+$'
               name='email'
               minLength='2'
               maxLength='30'

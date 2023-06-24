@@ -95,9 +95,12 @@ function App() {
   const handleRegister = ({ name, email, password }) => {
     auth.register(name, email, password)
       .then(() => {
-        navigate('/signin');
+        handleLogin({ email, password });
       }).catch((err) => {
         console.error(`Ошибка: ${err}`);
+        if (err === 400) {
+          setIsTooltipMessage('Произошла неизвестная ошибка');
+        }
         if (err === 409) {
           setIsTooltipMessage('Пользователь с таким email уже существует');
         }
@@ -115,7 +118,7 @@ function App() {
       .then((res) => {
         if (res.token) {
           localStorage.setItem('jwt', res.token);
-          handleCheckToken();
+          handleCheckToken(() => navigate('/movies'));
         }
       })
       .catch((err) => {
@@ -134,7 +137,7 @@ function App() {
   };
 
   // проверяем существующий токен
-  const handleCheckToken = useCallback(() => {
+  const handleCheckToken = useCallback((onSuccessCheck) => {
     if (localStorage.getItem('jwt')) {
       let jwt = localStorage.getItem('jwt');
       auth
@@ -143,6 +146,7 @@ function App() {
           const { _id, name, email } = res;
           setIsLoggedIn(true);
           setCurrentUser({ _id, name, email });
+          onSuccessCheck && onSuccessCheck();
         })
         .catch((err) => {
           console.error(`Ошибка: ${err}`);
@@ -238,7 +242,7 @@ function App() {
         <Routes>
           <Route path='/' element={
             <>
-              <Header isLoggedIn={isLoggedIn} />
+              <Header isLoggedIn={isLoggedIn} windowSize={windowSize} />
               <Main />
               <Footer />
             </>

@@ -6,7 +6,7 @@ import iconBlack from '../../images/icon__men-account.svg'
 import iconWhite from '../../images/icon__COLOR_font-white.svg'
 import Burger from '../Burger/Burger';
 
-function Navigation({ isLight }) {
+function Navigation({ isLight, windowSize }) {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
 
   return (
@@ -37,7 +37,7 @@ function Navigation({ isLight }) {
           <NavLink
             to='/profile'
             className={`movies-header__account-link ${isLight ? 'movies-header__account-link_light' : ''}`}>
-            <img className='movies-header__account-icon' src={isLight ? iconWhite : iconBlack} alt='Icon'/>
+            <img className='movies-header__account-icon' src={isLight && windowSize > 768 ? iconWhite : iconBlack} alt='Icon'/>
             Аккаунт
           </NavLink>
         </div>

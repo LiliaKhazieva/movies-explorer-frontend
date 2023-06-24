@@ -27,7 +27,12 @@
     .burger {
         width: 38px;
         height: 38px;
-        top: 18px;
+        top: 15px;
         right: 15px;
+    }
+
+    .burger__close {
+        height: 30px;
+        width: 30px;
     }
 }

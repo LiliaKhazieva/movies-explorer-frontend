@@ -5,6 +5,7 @@
     margin: 0;
     padding: 0;
     color: #000000;
+    position: relative;
 }
 
 .movies-cards__item:hover .movies-cards__save-btn {
@@ -67,7 +68,7 @@
 }
 
 .movies-cards__save-btn-active {
-    background-image: url("../../../images/icon__movies-galka.svg");
+    background-image: url("../../images/icon__movies-galka.svg");
     background-repeat: no-repeat;
     background-position: center;
     position: absolute;
@@ -81,10 +82,11 @@
     border: 0;
     background-color: #FF3055;
     cursor: pointer;
+    z-index: 10;
 }
 
 .movies-cards__delete-btn {
-    background-image: url("../../../images/detele-movie-btn.svg");
+    background-image: url("../../images/detele-movie-btn.svg");
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 50%;
@@ -96,6 +98,8 @@
 }
 
 .movies-cards__trailer-link {
+    height: 100%;
+    width: 100%;
     z-index: 0;
     position: relative;
     overflow: hidden;
@@ -103,16 +107,13 @@
 }
 
 .movies-cards__image {
-    height: auto;
+    height: 100%;
     width: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
     object-fit: cover;
-    max-width: 360px;
-    max-height: 201px;
     border-radius: 6px;
     padding: 0;
     margin: 0;
+    aspect-ratio: 16 / 9;
 }
 
 .movies-cards__save-btn,
@@ -138,5 +139,10 @@
     .movies-cards__title {
         font-size: 12px;
         line-height: 15px;
+    }
+
+    .movies-cards__save-btn {
+        top: 10px;
+        right: 10px;
     }
 }

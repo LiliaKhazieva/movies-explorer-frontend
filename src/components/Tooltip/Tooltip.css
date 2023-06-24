@@ -1,4 +1,4 @@
-.alert {
+.tooltip {
     position: fixed;
     bottom: 10px;
     right: 10px;
@@ -12,12 +12,12 @@
     z-index: 99;
 }
 
-.alert_active {
+.tooltip_active {
     opacity: 1;
     transform: translateX(0);
 }
 
-.alert__button {
+.tooltip__button {
     padding: 8px 10px;
     border: none;
     font-family: 'Inter', Arial, sans-serif;

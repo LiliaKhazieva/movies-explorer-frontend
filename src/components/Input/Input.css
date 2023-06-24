@@ -46,11 +46,10 @@
     font-size: 10px;
     line-height: 12px;
     color: #FF3055;
-    display: none;
 }
 
 .input__field_error {
-    color: #FF3055;
+    /*color: #FF3055;*/
 }
 
 .input__field_error + .input__error {

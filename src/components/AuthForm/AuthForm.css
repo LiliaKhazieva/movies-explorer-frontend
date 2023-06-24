@@ -37,6 +37,13 @@
     cursor: pointer;
 }
 
+.auth-form__form-button_disabled {
+    color: #fff;
+    opacity: 0.2;
+    background: #3456F3;
+    cursor: not-allowed;
+}
+
 .auth-form__form-button:hover {
     opacity: 0.85;
 }

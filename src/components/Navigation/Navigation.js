@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import './Navigation.css';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, Navigate, NavLink } from 'react-router-dom';
 import logo from '../../images/logoMovie.svg';
-import icon from '../../images/icon__men-account.svg'
+import iconBlack from '../../images/icon__men-account.svg'
+import iconWhite from '../../images/icon__COLOR_font-white.svg'
 import Burger from '../Burger/Burger';
 
-function Navigation() {
+function Navigation({ isLight }) {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
 
   return (
-    <header className='movies-header'>
+    <header className={`movies-header ${isLight ? 'movies-header_light' : ''}`}>
       <div className='movies-header__container container'>
         <Link to='/' className='movies-header__link'><img className='movies-header__logo' src={logo} alt='Логотип'/></Link>
         <Burger
+          isLight={isLight}
           isVisible={isMenuVisible}
           onClick={() => setIsMenuVisible(!isMenuVisible)}
         />
@@ -34,9 +36,8 @@ function Navigation() {
           </nav>
           <NavLink
             to='/profile'
-            className='movies-header__account-link'
-          >
-            <img className='movies-header__account-icon' src={icon} alt='Icon'/>
+            className={`movies-header__account-link ${isLight ? 'movies-header__account-link_light' : ''}`}>
+            <img className='movies-header__account-icon' src={isLight ? iconWhite : iconBlack} alt='Icon'/>
             Аккаунт
           </NavLink>
         </div>

@@ -83,10 +83,11 @@
     .techs__list {
         padding: 83px 10px 0 10px;
         gap: 10px;
+        flex-wrap: nowrap;
     }
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 670px) {
     .techs__list {
         flex-wrap: wrap;
     }

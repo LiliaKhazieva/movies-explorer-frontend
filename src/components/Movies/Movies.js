@@ -4,7 +4,6 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
 import Navigation from '../Navigation/Navigation';
 import MoviesCard from '../MoviesCard/MoviesCard';
-import Preloader from '../Preloader/Preloader';
 import './Movies.css'
 import { MoviesWrapper } from '../MoviesWrapper/MoviesWrapper';
 

@@ -23,12 +23,6 @@ function Header({ isLoggedIn }) {
   const headerIsLoggedInActive = (
     <>
       <Navigation isLight />
-      {/*<Link to='/' className='header__logo'><img className='header__image' src={logo} alt='Логотип'/></Link>*/}
-      {/*<nav className='header__nav'>*/}
-      {/*  <NavLink to='/movies' className='header__nav-link'>Фильмы</NavLink>*/}
-      {/*  <NavLink to='/saved-movies' className='header__nav-link'>Сохраненные фильмы</NavLink>*/}
-      {/*  <NavLink to='/profile' className='header__nav-link'>Аккаунт</NavLink>*/}
-      {/*</nav>*/}
     </>
   );
 

@@ -43,7 +43,7 @@ function Profile({ onProfile, handleLogOut }) {
               }
               placeholder='Введите имя'
               onChange={handleChange}
-              value={values.name}
+              value={values.name || ''}
               name='name'
               minLength='2'
               maxLength='30'
@@ -62,7 +62,7 @@ function Profile({ onProfile, handleLogOut }) {
               }
               placeholder='Введите email'
               onChange={handleChange}
-              value={values.email}
+              value={values.email || ''}
               name='email'
               minLength='2'
               maxLength='30'

@@ -4,7 +4,6 @@ import logo from '../../images/logoMovie.svg';
 import './AuthForm.css'
 
 function AuthForm({ onSubmit, title, name, buttonName, buttonClassName = '', children, description, isDisabled }) {
-  const [submitted, setSubmitted] = useState(false);
 
   return (
     <section className='auth-form'>
@@ -13,7 +12,7 @@ function AuthForm({ onSubmit, title, name, buttonName, buttonClassName = '', chi
       <form
         name={name}
         onSubmit={onSubmit}
-        className={`auth-form__form ${submitted ? 'auth-form__form--submitted' : ''}`}
+        className={`auth-form__form`}
       >
         {children}
         <button

@@ -39,7 +39,8 @@ function App() {
 
   // пользовательская информация и авторизованность
   const [currentUser, setCurrentUser] = useState({});
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isTokenChecked, setIsTokenChecked] = useState(false);
 
   // состояния загрузки
   const [isLoadingMovies, setIsLoadingMovies] = useState(false);
@@ -97,13 +98,13 @@ function App() {
         navigate('/signin');
       }).catch((err) => {
         console.error(`Ошибка: ${err}`);
-        setIsOpenTooltip(true);
         if (err === 409) {
           setIsTooltipMessage('Пользователь с таким email уже существует');
         }
         if (err === 500) {
           setIsTooltipMessage('При регистрации пользователя произошла ошибка');
         }
+        setIsOpenTooltip(true);
       });
   }
 
@@ -118,9 +119,7 @@ function App() {
         }
       })
       .catch((err) => {
-        setIsTooltipMessage('');
-        setIsLoading(false);
-        setIsOpenTooltip(true);
+        console.error(`Ошибка: ${err}`);
         if (err === 401) {
           setIsTooltipMessage('Вы ввели неправильный логин или пароль');
         }
@@ -130,6 +129,7 @@ function App() {
         if (err === 500) {
           setIsTooltipMessage('При авторизации произошла ошибка');
         }
+        setIsOpenTooltip(true);
       })
   };
 
@@ -145,11 +145,14 @@ function App() {
           setCurrentUser({ _id, name, email });
         })
         .catch((err) => {
-          console.log(`Ошибка: ${err}`);
+          console.error(`Ошибка: ${err}`);
           if (err === 401) {
             handleLogOut();
           }
-        });
+        })
+        .finally(() => {
+          setIsTokenChecked(true);
+        })
     } else {
       handleLogOut();
     }
@@ -160,20 +163,18 @@ function App() {
     mainApi.editProfile(name, email)
       .then((user) => {
         setCurrentUser(user)
-      setIsTooltipMessage('');
-      setIsOpenTooltip(true);
-      setIsTooltipMessage('Данные изменены')
+        setIsOpenTooltip(true);
+        setIsTooltipMessage('Данные изменены')
       })
       .catch((err) => {
-        console.log(`Ошибка: ${err}`);
-        setIsTooltipMessage('');
-        setIsOpenTooltip(true);
+        console.error(`Ошибка: ${err}`);
         if (err === 409) {
           setIsTooltipMessage('Пользователь с таким email уже существует');
         }
         if (err === 500) {
           setIsTooltipMessage('При авторизации произошла ошибка');
         }
+        setIsOpenTooltip(true);
       })
   }
 
@@ -220,7 +221,7 @@ function App() {
   // инициируем проверку токена при загрузке приложения
   useEffect(() => {
     handleCheckToken();
-  }, [handleCheckToken]);
+  }, []);
 
   // сохраняем поисковые параметры в хранилище
   useEffect(() => {
@@ -229,6 +230,7 @@ function App() {
       localStorage.setItem('allMoviesIsShort', JSON.stringify(allMoviesIsShort));
     }
   }, [isLoggedIn, allMoviesSearchQuery, allMoviesIsShort]);
+
 
   return (
     <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
@@ -243,64 +245,70 @@ function App() {
           }
           />
           <Route
-              path='/movies'
-              element ={
-            <ProtectedRoute isLoggedIn={isLoggedIn}>
-              <Movies
-                movies={filterMovies({
-                  movies: allMovies,
-                  searchQuery: allMoviesSearchQuery,
-                  isShort: allMoviesIsShort,
-                })}
-                savedMovies={savedMovies}
-                windowSize={windowSize}
-                onSearchQueryChange={setAllMoviesSearchQuery}
-                onSearchQueryValueChange={setAllMoviesSearchQueryValue}
-                searchQuery={allMoviesSearchQueryValue}
-                moviesIsShort={allMoviesIsShort}
-                onMoviesIsShortChange={setAllMoviesIsShort}
-                isLoading={isLoadingMovies}
-                onSaveMovie={handleSaveMovie}
-                onRemoveMovie={handleRemoveMovie}
-              />
-            </ProtectedRoute>
-          }
-          />
-          <Route
-              path='/saved-movies'
-              element={
-            <ProtectedRoute isLoggedIn={isLoggedIn}>
-              <SavedMovies
-                movies={filterMovies({
-                  movies: savedMovies,
-                  searchQuery: savedMoviesSearchQuery,
-                  isShort: savedMoviesIsShort,
-                })}
-                searchQuery={savedMoviesSearchQueryValue}
-                onSearchQueryChange={setSavedMoviesSearchQuery}
-                onSearchQueryValueChange={setSavedMoviesSearchQueryValue}
-                moviesIsShort={savedMoviesIsShort}
-                onMoviesIsShortChange={setSavedMoviesIsShort}
-                isLoading={isLoading}
-                onRemoveMovie={handleRemoveMovie}
-              />
-            </ProtectedRoute>
+            path='/movies'
+            element={
+              isTokenChecked && (
+                <ProtectedRoute isLoggedIn={isLoggedIn}>
+                  <Movies
+                    movies={filterMovies({
+                      movies: allMovies,
+                      searchQuery: allMoviesSearchQuery,
+                      isShort: allMoviesIsShort,
+                    })}
+                    savedMovies={savedMovies}
+                    windowSize={windowSize}
+                    onSearchQueryChange={setAllMoviesSearchQuery}
+                    onSearchQueryValueChange={setAllMoviesSearchQueryValue}
+                    searchQuery={allMoviesSearchQueryValue}
+                    moviesIsShort={allMoviesIsShort}
+                    onMoviesIsShortChange={setAllMoviesIsShort}
+                    isLoading={isLoadingMovies}
+                    onSaveMovie={handleSaveMovie}
+                    onRemoveMovie={handleRemoveMovie}
+                  />
+                </ProtectedRoute>
+              )
             }
           />
           <Route
-              path='/profile'
-              element ={
-            <ProtectedRoute isLoggedIn={isLoggedIn}>
-              <Profile
-                onProfile={handleEditProfile}
-                handleLogOut={handleLogOut}
-              />
-            </ProtectedRoute>
+            path='/saved-movies'
+            element={
+              isTokenChecked && (
+                <ProtectedRoute isLoggedIn={isLoggedIn}>
+                  <SavedMovies
+                    movies={filterMovies({
+                      movies: savedMovies,
+                      searchQuery: savedMoviesSearchQuery,
+                      isShort: savedMoviesIsShort,
+                    })}
+                    searchQuery={savedMoviesSearchQueryValue}
+                    onSearchQueryChange={setSavedMoviesSearchQuery}
+                    onSearchQueryValueChange={setSavedMoviesSearchQueryValue}
+                    moviesIsShort={savedMoviesIsShort}
+                    onMoviesIsShortChange={setSavedMoviesIsShort}
+                    isLoading={isLoading}
+                    onRemoveMovie={handleRemoveMovie}
+                  />
+                </ProtectedRoute>
+              )
+            }
+          />
+          <Route
+            path='/profile'
+            element={
+              isTokenChecked && (
+                <ProtectedRoute isLoggedIn={isLoggedIn}>
+                  <Profile
+                    onProfile={handleEditProfile}
+                    handleLogOut={handleLogOut}
+                  />
+                </ProtectedRoute>
+              )
             }
           />
           <Route
             path='/signin'
-            element ={
+            element={
               <Login
                 onLogin={handleLogin}
                 isLoggedIn={isLoggedIn}
@@ -309,14 +317,14 @@ function App() {
           />
           <Route
             path='/signup'
-            element ={
+            element={
               <Register
                 onRegister={handleRegister}
                 isLoggedIn={isLoggedIn}
               />
             }
           />
-          <Route path='*' element ={<PageNotFound />} />
+          <Route path='*' element={<PageNotFound />} />
         </Routes>
         <Tooltip
           isOpen={isOpenTooltip}

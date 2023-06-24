@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import './Tooltip.css';
-import { useAlert } from '../../utils/useAlert';
 
 function Tooltip({ isOpen, message, onClose }) {
 
@@ -9,13 +8,6 @@ function Tooltip({ isOpen, message, onClose }) {
       setTimeout(onClose, 5000)
     }
   }, [isOpen])
-
-  // const {
-  //   isAlertActive,
-  //   setIsAlertActive,
-  //   alertMessage,
-  //   setAlertMessage,
-  // } = useAlert();
 
   return (
     <div className={`tooltip ${isOpen ? 'tooltip_active' : ''}`}>

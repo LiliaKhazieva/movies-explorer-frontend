@@ -1,67 +1,91 @@
-import React, { useEffect } from 'react'
-import SearchForm from './SearchForm/SearchForm'
-import MoviesCardList from './MoviesCardList/MoviesCardList';
+import React, { useEffect, useState } from 'react'
+import SearchForm from '../SearchForm/SearchForm'
+import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
 import Navigation from '../Navigation/Navigation';
-import MoviesCard from './MoviesCard/MoviesCard';
-import Alert from '../Alert/Alert';
-import { useAlert } from '../../utils/useAlert';
-import { usePreloader } from '../../utils/usePreloader';
-import Preloader from '../Preloader/Preloader';
+import MoviesCard from '../MoviesCard/MoviesCard';
 import './Movies.css'
+import { MoviesWrapper } from '../MoviesWrapper/MoviesWrapper';
 
-function Movies() {
-  const {
-    isLoading,
-  } = usePreloader();
-  const {
-    isAlertActive,
-    setIsAlertActive,
-    alertMessage,
-    setAlertMessage,
-  } = useAlert();
+function Movies({
+  movies,
+  savedMovies,
+  windowSize,
+  isLoading,
+  onSearchQueryChange,
+  moviesIsShort,
+  onMoviesIsShortChange,
+  onSaveMovie,
+  onRemoveMovie,
+  searchQuery,
+  onSearchQueryValueChange,
+}) {
+  const [moviesCount, setMoviesCount] = useState(0);
 
+  // устанавливаем изначальное количество фильмов для вывода
   useEffect(() => {
-    setAlertMessage('Ошибка при загрузке списка фильмов');
-    setIsAlertActive(true);
-  }, [])
+    if (windowSize > 900) {
+      setMoviesCount(12);
+    } else if (windowSize > 650) {
+      setMoviesCount(8);
+    } else {
+      setMoviesCount(5);
+    }
+  }, [windowSize]);
 
-  const onFavoriteClick = () => {
-    console.log('onFavoriteClick')
+  // логика работы кнопки "еще"
+  const showMoreMovies = () => {
+    if (windowSize > 900) {
+      setMoviesCount(moviesCount + 3);
+    } else {
+      setMoviesCount(moviesCount + 2);
+    }
+  };
+
+  // условие отображения кнопки "еще"
+  const isShowMoreMoviesVisible = () => {
+    return movies !== null && moviesCount < movies.length
+  };
+
+  const onSearchClick = () => {
+    onSearchQueryChange(searchQuery);
   }
 
   return (
     <>
-      <Alert
-        isActive={isAlertActive}
-        message={alertMessage}
-        onClose={() => setIsAlertActive(false)}
-      />
       <Navigation />
       <main className='movies'>
-        <div className='movies__container container-thin'>
+        <div className='container movies__container'>
           <h1 className='movies__title-hidden'>Movies</h1>
-          <SearchForm />
-          <Preloader
+          <SearchForm
+            searchQuery={searchQuery}
+            onSearchQueryChange={onSearchQueryValueChange}
+            isShort={moviesIsShort}
+            onIsShortChange={onMoviesIsShortChange}
+            onSearch={onSearchClick}
+          />
+          <MoviesWrapper
+            movies={movies}
             isLoading={isLoading}
-            text='Загрузка списка фильмов...'
+            searchQuery={searchQuery}
           >
-            <MoviesCardList>
-              <MoviesCard isFavorite onFavoriteClick={onFavoriteClick} />
-              <MoviesCard onFavoriteClick={onFavoriteClick} />
-              <MoviesCard onFavoriteClick={onFavoriteClick} />
-              <MoviesCard onFavoriteClick={onFavoriteClick} />
-              <MoviesCard onFavoriteClick={onFavoriteClick} />
-              <MoviesCard onFavoriteClick={onFavoriteClick} />
-              <MoviesCard onFavoriteClick={onFavoriteClick} />
-              <MoviesCard onFavoriteClick={onFavoriteClick} />
-              <MoviesCard onFavoriteClick={onFavoriteClick} />
-              <MoviesCard onFavoriteClick={onFavoriteClick} />
-              <MoviesCard onFavoriteClick={onFavoriteClick} />
-              <MoviesCard onFavoriteClick={onFavoriteClick} />
-            </MoviesCardList>
-          </Preloader>
-          <button className='movies__more-btn'>Ещё</button>
+            <>
+              <MoviesCardList>
+                {movies && savedMovies && movies.slice(0, moviesCount).map((movie, index) => {
+                  const savedMovie = savedMovies.find(item => item.movieId === movie.id);
+                  return (
+                    <MoviesCard
+                      info={movie}
+                      isFavorite={!!savedMovie}
+                      onFavoriteClick={(isFavorite) => isFavorite ? onSaveMovie(movie) : onRemoveMovie(savedMovie)}
+                      key={index}
+                    />
+                  )
+                })}
+              </MoviesCardList>
+              {isShowMoreMoviesVisible() && <button className='movies__more-btn' onClick={showMoreMovies}>Ещё</button>}
+            </>
+          </MoviesWrapper>
         </div>
       </main>
       <Footer />

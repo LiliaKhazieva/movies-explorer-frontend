@@ -1,14 +1,24 @@
 import React from 'react';
-import MoviesCardList from '../Movies/MoviesCardList/MoviesCardList';
-import SearchForm from '../Movies/SearchForm/SearchForm';
-import './SavedMovies.css';
+import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import SearchForm from '../SearchForm/SearchForm';
 import Navigation from '../Navigation/Navigation';
 import Footer from '../Footer/Footer';
-import MoviesCard from '../Movies/MoviesCard/MoviesCard';
+import MoviesCard from '../MoviesCard/MoviesCard';
+import { MoviesWrapper } from '../MoviesWrapper/MoviesWrapper';
+import './SavedMovies.css';
 
-function SavedMovies() {
-  const onDeleteClick = () => {
-    console.log('onDeleteClick')
+function SavedMovies({
+  movies,
+  isLoading,
+  onRemoveMovie,
+  moviesIsShort,
+  onMoviesIsShortChange,
+  searchQuery,
+  onSearchQueryChange,
+  onSearchQueryValueChange,
+}) {
+  const onSearchClick = () => {
+    onSearchQueryChange(searchQuery);
   }
 
   return (
@@ -16,16 +26,31 @@ function SavedMovies() {
       <Navigation />
       <section className='saved-movies'>
         <h1 className='saved-movies__title-hidden'>Movies</h1>
-        <div className='container_thin saved-movies__container'>
-          <SearchForm />
-          <MoviesCardList>
-            <MoviesCard onDeleteClick={onDeleteClick} />
-            <MoviesCard onDeleteClick={onDeleteClick} />
-            <MoviesCard onDeleteClick={onDeleteClick} />
-          </MoviesCardList>
+        <div className='container saved-movies__container'>
+          <SearchForm
+            searchQuery={searchQuery}
+            isShort={moviesIsShort}
+            onSearchQueryChange={onSearchQueryValueChange}
+            onIsShortChange={onMoviesIsShortChange}
+            onSearch={onSearchClick}
+          />
+          <MoviesWrapper
+            movies={movies}
+            isLoading={isLoading}
+            searchQuery={searchQuery}
+          >
+            <MoviesCardList>
+              {movies && movies.map((movie, index) => (
+                <MoviesCard
+                  info={movie}
+                  onDeleteClick={() => onRemoveMovie(movie)} key={index}
+                />
+              ))}
+            </MoviesCardList>
+          </MoviesWrapper>
         </div>
       </section>
-      <Footer isThin />
+      <Footer />
     </>
   );
 }

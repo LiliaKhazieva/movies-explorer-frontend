@@ -1,7 +1,7 @@
 import React from 'react';
-import './FilterCheckbox.css';
+import './SearchFormCheckbox.css';
 
-function FilterCheckbox({
+function SearchFormCheckbox({
   value,
   onClick,
 }) {
@@ -15,4 +15,4 @@ function FilterCheckbox({
   )
 }
 
-export default FilterCheckbox;
+export default SearchFormCheckbox;

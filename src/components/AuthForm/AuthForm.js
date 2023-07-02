@@ -1,15 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../images/logoMovie.svg';
 import './AuthForm.css'
 
-function AuthForm({ title, name, buttonName, buttonClassName = '', children, description }) {
-  const [submitted, setSubmitted] = useState(false);
-
-  const onSubmit = () => {
-    console.log('submit')
-    setSubmitted(true);
-  }
+function AuthForm({ onSubmit, title, name, buttonName, buttonClassName = '', children, description, isDisabled }) {
 
   return (
     <section className='auth-form'>
@@ -17,13 +11,15 @@ function AuthForm({ title, name, buttonName, buttonClassName = '', children, des
       <h1 className='auth-form__title'>{title}</h1>
       <form
         name={name}
-        className={`auth-form__form ${submitted ? 'auth-form__form--submitted' : ''}`}
+        onSubmit={onSubmit}
+        className={`auth-form__form`}
       >
         {children}
         <button
           type='submit'
           className={`auth-form__form-button ${buttonClassName}`}
           onSubmit={onSubmit}
+          disabled={isDisabled}
         >
           {buttonName}
         </button>

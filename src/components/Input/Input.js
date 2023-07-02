@@ -3,13 +3,17 @@ import './Input.css';
 
 function Input({
   label = '',
-  type = 'text',
-  placeholder = '',
-  required = false,
-  minLength = 0,
-  maxLength = 999,
-  hasError = false,
+  type,
+  placeholder,
+  required,
+  minLength = 2,
+  maxLength = 30,
+  name,
+  onChange,
+  errorMessage = '',
+  pattern,
 }) {
+
   return (
     <div className='input'>
       <label className="input__label">{label}</label>
@@ -19,9 +23,12 @@ function Input({
         required={required}
         minLength={minLength}
         maxLength={maxLength}
-        className={`input__field ${hasError ? 'input__field_error' : ''}`}
+        className='input__field'
+        name={name}
+        pattern={pattern}
+        onChange={onChange}
       />
-      {hasError && <span className='input__error'>Что-то пошло не так...</span>}
+      {!!errorMessage.length && <span className='input__error'>{errorMessage}</span>}
     </div>
   )
 }

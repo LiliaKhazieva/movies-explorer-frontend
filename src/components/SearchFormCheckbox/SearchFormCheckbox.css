@@ -38,7 +38,7 @@
 }
 
 .search-form__switch-and-text {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     margin-top: 32px;
     margin-bottom: 47px;

@@ -56,10 +56,11 @@
 .portfolio__icon {
     background-image: url("../../../images/array.svg");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     width: 18px;
     height: 18px;
     margin: 10px 5px 0 0;
+    flex-shrink: 0;
 }
 
 .portfolio__text {
@@ -107,7 +108,6 @@
     }
 
     .portfolio__icon {
-        margin: 0 5px 0 0;
         width: 10px;
         height: 10px;
     }

@@ -89,4 +89,9 @@
     .footer__nav-copyright {
         color: #A0A0A0;
     }
+
+    .footer__link {
+        font-size: 12px;
+        line-height: 15px;
+    }
 }

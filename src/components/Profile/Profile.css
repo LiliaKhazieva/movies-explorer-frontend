@@ -26,6 +26,7 @@
 }
 
 .profile__form-row {
+    position: relative;
     padding: 7px 0;
     display: flex;
     justify-content: space-between;
@@ -51,6 +52,28 @@
     outline: none;
 }
 
+.profile__form-input_error {
+    color: #ee3465;
+}
+
+.profile__error {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 10px;
+    text-rendering: optimizeLegibility;
+    text-decoration: none;
+    text-align: right;
+    letter-spacing: 0;
+    margin: 0;
+    padding: 0;
+    color: #ee3465;
+}
+
 .profile__bottom {
     margin-top: 200px;
     display: flex;
@@ -68,14 +91,26 @@
     background: none;
     border: none;
     padding: 0;
+    cursor: pointer;
+}
+
+.profile__bottom-edit_disabled, .profile__bottom-edit_disabled:hover {
+    color: #000000;
+    opacity: 0.2;
+    background: transparent;
+    cursor: not-allowed;
 }
 
 .profile__logout {
+    padding: 0;
+    border: none;
+    background: transparent;
     font-weight: 500;
     font-size: 13px;
     line-height: 16px;
     color: #FF3055;
     text-decoration: none;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {

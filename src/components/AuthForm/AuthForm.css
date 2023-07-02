@@ -41,6 +41,12 @@
     opacity: 0.85;
 }
 
+.auth-form__form-button_disabled, .auth-form__form-button_disabled:hover {
+    color: #fff;
+    opacity: 0.2;
+    cursor: not-allowed;
+}
+
 .auth-form__title {
     margin: 40px 0 40px 0;
     font-style: normal;

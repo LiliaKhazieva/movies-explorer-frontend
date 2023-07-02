@@ -1,0 +1,22 @@
+.auth-form-description {
+    margin: 16px 0 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #A0A0A0;
+    text-align: center;
+}
+
+.auth-form-description__link {
+    margin-left: 6px;
+    color: #3456F3;
+    text-decoration: none;
+}
+
+@media (max-width: 450px) {
+    .auth-form-description {
+        padding-bottom: 20px;
+        font-size: 12px;
+    }
+}

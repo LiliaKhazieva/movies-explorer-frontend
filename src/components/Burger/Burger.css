@@ -1,0 +1,33 @@
+.burger {
+    width: 44px;
+    height: 44px;
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+@media (max-width: 768px) {
+    .burger {
+        display: flex;
+    }
+
+    .burger__close {
+        height: 36px;
+        width: 35px;
+        top: 20px;
+        right: 20px;
+    }
+}
+
+@media (max-width: 450px) {
+    .burger {
+        width: 38px;
+        height: 38px;
+        top: 18px;
+        right: 15px;
+    }
+}
